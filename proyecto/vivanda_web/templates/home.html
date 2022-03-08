@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center flex-column bd-highlight mb-3" style="height: 50%;">
+    <p class="my-auto bd-highlight lead text-center">Esta es una versión de prueba</p>
+    <a class="btn btn-outline-success" href="{% url 'productos:index' %}" role="button">Ir a productos</a>
+  </div>
+</div>
+{% endblock %}

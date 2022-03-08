@@ -1,0 +1,17 @@
+<div class="col">
+    <div class="card border-light h-100" style="width: 15rem;">
+        <img src="https://estaticos.miarevista.es/media/cache/1000x590_thumb/uploads/images/gallery/59144d795cafe812663c986a/razonescomermanzana-int.jpg"
+            class="card-img-top img-fluid" alt="manzanas">
+        <div class="card-body">
+            <h5 class="card-title text-truncate"> {{producto.nombre}} </h5>
+            <p class="card-text">Precio por kg</p>
+            <p class="card-text"><strong>S/. 10.50</strong></p>
+        </div>
+        <div class="card-footer bg-transparent border-light p-0">
+            <div class="d-grid">
+                <button id="{{ producto.id }}" onclick="agregarProducto(this);" value="{{producto.id}}" class="btn btn-dark">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

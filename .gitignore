@@ -1,0 +1,5 @@
+# Ignora la carpeta entorno, la cual almacena las instalaciones específicas de Python
+entorno
+
+# Ignora todas las carpetas cache de Django
+*__pycache__
