@@ -90,4 +90,4 @@ py manage.py runserver
 
 * **Jonathan Rojas** - *Trabajo Inicial y Documentación* - [jonathanrojasy](https://github.com/jonathanrojasy)
 
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
+También puedes mirar la lista de todos los [contribuyentes](https://github.com/jonathanrojasy/dbd_213_g5_ecommerce/graphs/contributors) quíenes han participado en este proyecto. 
