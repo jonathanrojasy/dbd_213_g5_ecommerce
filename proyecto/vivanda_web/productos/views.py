@@ -42,3 +42,6 @@ def index(request):
         }
     ]
     return render(request, 'productos/index.html',{'categorias': categorias, 'productos': productos })
+
+def demo(request):
+    return render(request, 'productos/demo.html')
