@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from . models import Producto
 
 # Create your views here.
 def index(request):
@@ -44,4 +45,5 @@ def index(request):
     return render(request, 'productos/index.html',{'categorias': categorias, 'productos': productos })
 
 def demo(request):
-    return render(request, 'productos/demo.html')
+    productos = Producto.objects.raw('SELECT 1 id, * FROM producto;')
+    return render(request, 'productos/demo.html',{'productos': productos})
