@@ -4,9 +4,9 @@
         {% for categoria in categorias %}
             
         {% if forloop.counter == 1 %}
-        <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#{{categoria.id}}" role="tab">{{ categoria.nombre }}</a>
+        <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#{{categoria.id_categoria}}" role="tab">{{ categoria.descripcion_categoria }}</a>
         {% else %}
-        <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#{{categoria.id}}" role="tab">{{ categoria.nombre }}</a>
+        <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#{{categoria.id_categoria}}" role="tab">{{ categoria.descripcion_categoria }}</a>
         {% endif %}
 
         {% endfor %}

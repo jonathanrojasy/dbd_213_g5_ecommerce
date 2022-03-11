@@ -22,7 +22,7 @@
     <div class="tab-content pt-3">
         {% if productos|length > 0 %}
         {% for producto in productos %}
-
+        {{ producto.id }}
         {% if forloop.counter == 1 %}
 
         {% for key,arreglo in producto.items %}
@@ -41,7 +41,6 @@
         {% else %}
             
         {% for key,arreglo in producto.items %}
-        
         <div class="tab-pane" id="{{ key }}" role="tabpanel">
             <div class="row row-cols-1 row-cols-md-4 g-4">
                 {% for prod in arreglo %}
