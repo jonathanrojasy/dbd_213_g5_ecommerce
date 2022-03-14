@@ -6,14 +6,9 @@
 
 {% block content %}
 
-<div class="container">
-    <p class="h2">LISTADO DE PRODUCTOS</p>
-    {% for producto in productos %}
-    <p> {{ producto.nombre_producto }} </p>
-    {% endfor %}
-</div>
 
-<!-- <div class="container-fluid">
+
+<div class="container-fluid">
     <div class="row" style="height: 100vh;">
         <div class="d-flex justify-content-evenly align-items-center flex-column bd-highlight mb-3">
             <p class="h3">Ingrese los datos del producto</p>
@@ -69,6 +64,6 @@
             </form>
         </div>
     </div>
-</div> -->
+</div>
 
 {% endblock %}
