@@ -1,15 +1,15 @@
 <div class="col">
-    <div class="card border-light h-100" >
+    <div id="{{ producto.cod_producto }}-card" class="card border-light h-100" >
         <img src="https://asiaebuy.com/img/default.jpg"
             class="card-img-top img-fluid" alt="manzanas">
         <div class="card-body">
             <h5 class="card-title text-truncate"> {{producto.nombre_producto}} </h5>
             <p class="card-text"> {{ producto.unidad_medida }} </p>
-            <p class="card-text">S/.<strong> {{ producto.precio_unitario_producto }} </strong></p>
+            <p class="card-text">S/.<strong id="{{ producto.cod_producto }}-pu">{{ producto.precio_unitario_producto }}</strong></p>
         </div>
         <div class="card-footer bg-transparent border-light p-1">
             <div class="d-grid mx-auto">
-                <button id="{{ producto.cod_producto }}" onclick="agregarProducto(this,event);" value="0" class="btn btn-dark">Agregar</button>
+                <button id="{{ producto.cod_producto }}" onclick="agregarProducto(this);" value="0" class="btn btn-dark">Agregar</button>
             </div>
         </div>
     </div>

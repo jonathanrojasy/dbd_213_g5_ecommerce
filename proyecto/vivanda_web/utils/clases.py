@@ -13,7 +13,7 @@ class Producto:
         self.tipo_producto = tupla[2]
         self.informacion_producto = tupla[3]
         self.unidad_medida = tupla[4]
-        self.precio_unitario_producto = tupla[5]
+        self.precio_unitario_producto = str(tupla[5]).replace(",",".")
         self.modelo_prod = tupla[6]
         self.marca_prod = tupla[7]
         self.id_sub_categoria = tupla[8]

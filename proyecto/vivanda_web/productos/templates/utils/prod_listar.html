@@ -28,6 +28,7 @@
         
         <div class="tab-pane active" id="{{ key }}" role="tabpanel">
             <div class="row row-cols-1 row-cols-md-4 g-4">
+                
                 {% for prod in arreglo %}
 
                 {% prod_tarjeta prod %}
@@ -49,25 +50,12 @@
                 {% endfor %}
             </div>
         </div>
+        
         {% endfor %}
 
         {% endif %}
         {% endfor %}
-        <div class="container mt-4">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-end">
-                    <li class="page-item disabled">
-                        <a class="page-link">Anterior</a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Siguiente</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        
         {% else %}
         <p>No hay productos</p>
         {% endif %}

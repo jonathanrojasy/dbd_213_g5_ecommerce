@@ -48,41 +48,44 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
   <script>
-    function agregarProducto(objeto) {
-      if (objeto.value == "0") {
-        console.log(objeto.value,"agregarProducto");
-        objeto.value = String(parseInt(objeto.value,10) + 1);
+    var agregarProducto = function (objeto) {
+      if (objeto.value == "0" && objeto.innerHTML == "Agregar") {
+        document.getElementById(objeto.id+"-card").className = "card border-dark h-100";
+        precio_unitario = parseFloat(document.getElementById(objeto.id+"-pu").innerHTML);
+        objeto.setAttribute( "onClick", "javascript: ;" );
+        cantidad_productos = parseInt(objeto.value,10) + 1;
+        objeto.value = String(cantidad_productos);
         objeto.className = "btn btn-outline-light text-black";
         objeto.style.border = "1px solid #000000";
-        objeto.innerHTML = "<div class='d-flex align-items-center justify-content-around'><button name='minus' class='btn btn-outline-secondary' onclick='minusProducto(this);' value='"+objeto.id+"'><i class='fa fa-minus' aria-hidden='true'></i></button><div id='"+objeto.id+"-value' class='text-align-center'>"+objeto.value+"</div><button value='"+objeto.id+"' class='btn btn-outline-secondary' onclick='plusProducto(this);'><i class='fa fa-plus' aria-hidden='true'></i></button><div class='text-align-center'>S/.25</div></div>";
-        objeto.removeAttribute("onclick");
-      } 
+        objeto.innerHTML = "<div class='d-flex align-items-center justify-content-around'><button name='minus' class='btn btn-outline-secondary' onclick='minusProducto(this);' value='"+objeto.id+"'><i class='fa fa-minus' aria-hidden='true'></i></button><div id='"+objeto.id+"-value' class='text-align-center'>"+objeto.value+"</div><button value='"+objeto.id+"' class='btn btn-outline-secondary' onclick='plusProducto(this);'><i class='fa fa-plus' aria-hidden='true'></i></button><div id='"+objeto.id+"-monto' class='text-align-center'>S/. "+String(cantidad_productos*precio_unitario)+"</div></div>";
+      }else{
+        document.getElementById(objeto.id+"-card").className = "card border-light h-100";
+        objeto.innerHTML = "Agregar";
+      }
     }
-    function minusProducto(objeto) {
+    var minusProducto = function (objeto) {
       objeto_base = document.getElementById(objeto.value);
-      console.log(objeto_base,"minusProducto");
-      console.log(objeto_base.value,"minusProducto");
       if (objeto_base.value == "1") {
-        // console.log(objeto_base);
-        objeto_base.innerHTML = "Agregar";
+        objeto_base.setAttribute( "onClick", "javascript: agregarProducto(this);" );
         objeto_base.value = "0";
         objeto_base.className = "btn btn-dark";
         objeto_base.style = "";
-        // objeto_base.onclick = function(event) {
-        //   agregarProducto(event);
-        // }
-        objeto_base.onclick = function() { agregarProducto(this) };
-        console.log(document.getElementById(objeto.value));
       }else{
         objeto_valor = document.getElementById(objeto.value+"-value").innerHTML;
-        document.getElementById(objeto.value+"-value").innerHTML = String(parseInt(objeto_valor,10) - 1);
-        document.getElementById(objeto.value).value = String(parseInt(objeto_valor,10) - 1);
+        precio_unitario = parseFloat(document.getElementById(objeto.value+"-pu").innerHTML);
+        cantidad_productos = parseInt(objeto_valor,10) - 1;
+        document.getElementById(objeto.value+"-value").innerHTML = String(cantidad_productos);
+        document.getElementById(objeto.value).value = String(cantidad_productos);
+        document.getElementById(objeto.value+"-monto").innerHTML = String("S/. "+cantidad_productos*precio_unitario);
       }
     }
     function plusProducto(objeto) {
       objeto_valor = document.getElementById(objeto.value+"-value").innerHTML;
-      document.getElementById(objeto.value+"-value").innerHTML = String(parseInt(objeto_valor,10) + 1);
-      document.getElementById(objeto.value).value = String(parseInt(objeto_valor,10) + 1);
+      cantidad_productos = parseInt(objeto_valor,10) + 1;
+      precio_unitario = parseFloat(document.getElementById(objeto.value+"-pu").innerHTML);
+      document.getElementById(objeto.value+"-monto").innerHTML = String("S/. "+cantidad_productos*precio_unitario);
+      document.getElementById(objeto.value+"-value").innerHTML = String(cantidad_productos);
+      document.getElementById(objeto.value).value = String(cantidad_productos);
     }
     function ordenarProductos(params) {
       if (params.getElementsByTagName('i')[0].className.includes("down")) {
