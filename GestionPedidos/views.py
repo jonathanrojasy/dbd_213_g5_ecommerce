@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
-from GestionPedidos.Carrito import Carrito
+from utils import Carrito
 from GestionPedidos.models import Producto, Promocion
 from GestionUsuarios.Usuario import Cliente
 from vivanda_web.conexion import conexion
