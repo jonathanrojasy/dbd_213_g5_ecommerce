@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmacion de correo</title>
+</head>
+<body>
+    <h1>Confirmación de Correo</h1>
+    <form action="/confirmacion/" method="post" autocomplete="off">
+        <p>Ingrese tu código</p>
+        {{info}}<br><br>
+        <input name="codigo" type="text" pattern={{numero}} title="Código incorrecto">
+        <button type="submit">Verificar</button>
+        {% csrf_token %}
+    </form>
+</body>
+</html>

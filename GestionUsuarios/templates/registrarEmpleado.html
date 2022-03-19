@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de empleado</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'templates/estiloLogin.css' %}"/>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+    .titulo {
+        margin-top: 80px;
+    }
+    h1 {
+        font-family: "Inter";
+    }
+    p {
+        font-family: helvetica;
+    }
+    .linea {
+        display: inline-block;
+    }
+    .ingreso-datos {
+        background-color: transparent;
+        width: 200px;
+        text-align: left;
+        margin-top: 30px;
+        margin-right: 70px;
+    }
+    .ingresar {
+        background: #000000;
+        color: white;
+        width: 250px;
+        height: 30px;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-left: 3px;
+
+    }
+    a {
+        color: blue;
+        margin: 20px;
+        text-decoration: none;
+        font-family: helvetica;
+    }
+    input {
+        width: 250px;
+        height: 30px;
+        border-radius: 10px;
+    }
+    input[placeholder]{
+        font-size: 15px;
+    }
+
+
+</style>
+<body>
+    <div  align="center" class="titulo">
+        <h1>Intranet Vivanda<br>Registro</h1>
+    </div>
+    <center>
+        <div class="ingreso-datos">
+            <form action="/registroEmpleado/" method="post" autocomplete="off">
+                <p>Código de empleado</p>
+                <input name="usuario" type="text" placeholder="Codigo de empleado" class="invalido2" required>
+                <p>Ingrese su nueva contraseña</p>
+                <input name="contrasena1" type="password" placeholder="Contraseña" class="invalido" required>
+
+                <p>Confirmar contraseña</p>
+                <input name="contrasena2" type="password" placeholder="Contraseña" class="invalido" required><br>
+
+                {% if invalido %}
+                    <style>
+                        .invalido {
+                            border-color: red;
+                        }
+                    </style>
+                    <p style="color: red;">{{invalido}}</p>
+                {% endif %}
+                {% if invalido2 %}
+                    <style>
+                        .invalido2 {
+                            border-color: red;
+                        }
+                    </style>
+                    <p style="color: red;">{{invalido2}}</p>
+                {% endif %}
+                <br>
+                <button type="submit" class="ingresar">Registrarse</button>
+                {% csrf_token %}
+            </form><br>
+        </div>
+        <div class="titulo" style="margin-left: 20px;">
+            <p class="linea">¿Ya tienes una cuenta?</p>
+            <a href="/loginEmpleado/">Iniciar Sesión</a>
+        </div>
+    </center>
+</body>
+</html>

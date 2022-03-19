@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+    .titulo {
+        margin-top: 110px;
+    }
+    h1 {
+        font-family: "Inter";
+    }
+    p {
+        font-family: helvetica;
+    }
+    .linea {
+        display: inline-block;
+    }
+    .ingreso-datos {
+        background-color: transparent;
+        width: 200px;
+        text-align: left;
+        margin-top: 50px;
+        padding-left: 20px;
+    }
+    .ingresar {
+        background: #000000;
+        color: white;
+        width: 180px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+    a {
+        color: blue;
+        margin: 20px;
+        text-decoration: none;
+        font-family: helvetica;
+    }
+    input {
+        width: 200px;
+        height: 30px;
+
+    }
+    input[placeholder]{
+        size: 30;
+    }
+
+

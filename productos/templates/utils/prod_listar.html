@@ -1,0 +1,63 @@
+{% load productos_tags %}
+<div class="container-fluid">
+    <div class="pt-2">
+        <p class="h4">Productos</p>
+    </div>
+    <div class="d-flex">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <label class="btn btn-outline-secondary" for="btnradio1">Todos</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btnradio2">Descuento</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="btnradio3">Precio más bajo</label>
+        </div>
+        <div class="ms-auto">
+            <button class="btn btn-outline-secondary" onclick="ordenarProductos(this);" href="#" role="button">Ordenar por <i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+        </div>
+    </div>
+    <div class="tab-content pt-3">
+        {% if productos|length > 0 %}
+        {% for producto in productos %}
+        {{ producto.id }}
+        {% if forloop.counter == 1 %}
+
+        {% for key,arreglo in producto.items %}
+        
+            <div class="tab-pane active" id="{{ key }}" role="tabpanel">
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+
+                    {% for prod in arreglo %}
+
+                    {% prod_tarjeta prod %}
+
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+        
+        {% else %}
+            
+        {% for key,arreglo in producto.items %}
+            <div class="tab-pane" id="{{key}}" role="tabpanel">
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                    {% for prod in arreglo %}
+
+                    {% prod_tarjeta prod %}
+
+                    {% endfor %}
+                </div>
+            </div>
+        
+        {% endfor %}
+
+        {% endif %}
+        {% endfor %}
+        
+        {% else %}
+        <p>No hay productos</p>
+        {% endif %}
+    </div>
+</div>

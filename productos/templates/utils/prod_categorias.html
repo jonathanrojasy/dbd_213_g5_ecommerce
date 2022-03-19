@@ -1,0 +1,15 @@
+<div class="pt-2">
+    <p class="h5 text-break">Categorías</p>
+    <div class="list-group" id="list-tab" role="tablist">
+        {% for categoria in categorias %}
+            
+        {% if forloop.counter == 1 %}
+        <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#{{categoria.id_categoria}}" role="tab">{{ categoria.nombre_cat }}</a>
+        {% else %}
+        <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#{{categoria.id_categoria}}" role="tab">{{ categoria.nombre_cat }}</a>
+        {% endif %}
+
+        {% endfor %}
+      </div>
+    
+</div>

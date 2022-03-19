@@ -1,0 +1,40 @@
+<div class="col">
+    <div id="{{ producto.cod_producto }}-card" class="card border-light h-100" >
+        <img src="https://asiaebuy.com/img/default.jpg"
+            class="card-img-top img-fluid" alt="manzanas">
+        <div class="card-body">
+            <h5 class="card-title text-truncate"> {{producto.nombre_producto}} </h5>
+            <p class="card-text"> {{ producto.unidad_medida }} </p>
+            <p class="card-text">S/.<strong id="{{ producto.cod_producto }}-pu">{{ producto.precio_unitario_producto }}</strong></p>
+        </div>
+        <div class="card-footer bg-transparent border-light p-1">
+            <div class="d-grid mx-auto">
+                <!--<a id="agregar" href="/agregar/{{producto.cod_producto}}">Agregar</a>-->
+                {% if producto.cantidad == 0 %}
+                <div class ="pepito" style="display: block; border: solid;">
+                    <form action='/agregar/{{producto.cod_producto}}'>
+                        <button>Agregar</button>
+                    </form>
+                </div>
+                {% else %}
+                <div class='d-flex align-items-center justify-content-around' style="border: solid;">
+                    <form action='/restar/{{producto.cod_producto}}'>
+                        <button style="margin-top: 15px;" class='btn btn-outline-secondary'>
+                            <i class='fa fa-minus' aria-hidden='true'></i>
+                        </button>
+                    </form>
+                    <div class='text-align-center'>{{producto.cantidad}}</div>
+                    <form action='/agregar/{{producto.cod_producto}}'>
+                        <button style="margin-top: 15px;" class='btn btn-outline-secondary'>
+                            <i class='fa fa-plus' aria-hidden='true'></i>
+                        </button>
+                    </form>
+                    <div class='text-align-center'>S/.{{producto.subtotal}}</div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+

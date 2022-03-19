@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Cliente</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'templates/estiloLogin.css' %}"/>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+    .titulo {
+        margin-top: 20px;
+    }
+    h1 {
+        font-family: "Inter";
+    }
+    p {
+        font-family: helvetica;
+    }
+    .linea {
+        display: inline-block;
+    }
+    .ingreso-datos {
+        background-color: transparent;
+        width: 200px;
+        text-align: left;
+        margin-top: 30px;
+        margin-right: 70px;
+    }
+    .ingresar {
+        background: #000000;
+        color: white;
+        width: 250px;
+        height: 30px;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-left: 3px;
+
+    }
+    a {
+        color: blue;
+        margin: 20px;
+        text-decoration: none;
+        font-family: helvetica;
+    }
+    input {
+        width: 250px;
+        height: 30px;
+        border-radius: 10px;
+    }
+    input[placeholder]{
+        font-size: 15px;
+    }
+    select {
+        font-size: 15px;
+        width: 257px;
+        height: 33px;
+        border-radius: 10px;
+    }
+
+</style>
+
+<body>
+    <div  align="center" class="titulo">
+        <h1>Intranet Vivanda<br>Registro de Cliente</h1>
+    </div>
+    <center>
+        <div class="ingreso-datos">
+            <form action="/registroCliente/" method="post" autocomplete="off">
+                <p>Nombre de Usuario</p>
+                <input name="usuario" type="text" placeholder="Nombre de Usuario" class="invalido2" required>
+                <p>Correo electrónico</p>
+                <input name="correo" type="email" placeholder="Correo" class="invalido3" required>
+                <p class="linea">Tipo de Documento</p>
+                <select name="tipo_documento" required>
+                    <option value="">Elige una opcion</option>
+                    <option value="D">DNI</option>
+                    <option value="R">RUC</option>
+                </select>
+                <p>Número de Documento</p>
+                <input name="numero_documento" type="number" placeholder="Número de Documento" required>
+                <p>Contraseña</p>
+                <input name="contrasena1" type="password" placeholder="Contraseña" class="invalido" required>
+                <p>Confirmar contraseña</p>
+                <input name="contrasena2" type="password" placeholder="Contraseña" class="invalido" required><br>
+                {% if invalido %}
+                    <style>
+                        .invalido {
+                            border-color: red;
+                        }
+                    </style>
+                    <p style="color: red;">{{invalido}}</p>
+                {% endif %}
+                {% if invalido2 %}
+                    <style>
+                        .invalido2 {
+                            border-color: red;
+                        }
+                    </style>
+                    <p style="color: red;">{{invalido2}}</p>
+                {% endif %}
+                {% if invalido3 %}
+                    <style>
+                        .invalido3 {
+                            border-color: red;
+                        }
+                    </style>
+                    <p style="color: red;">{{invalido3}}</p>
+                {% endif %}
+                {% if info %}
+                    <p style="color: red;">{{info}}</p>
+                {% endif %}
+                <br>
+                <button type="submit" class="ingresar">Registrarse</button>
+                {% csrf_token %}
+            </form><br>
+        </div>
+        <div class="titulo" style="margin-left: 20px;">
+            <p class="linea">¿Ya tienes una cuenta?</p>
+            <a href="/login/">Iniciar Sesión</a>
+        </div>
+    </center>
+</body>
+</html>

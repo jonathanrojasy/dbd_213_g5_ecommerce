@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pedidos</title>
+</head>
+<style>
+    table,td {
+        border: solid 1px black;
+        text-align: center;
+    }
+    thead {
+        background-color: yellow;
+    }
+</style>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td><p>ID de Pedido</p></td>
+                <td><p>Fecha de Pedido</p></td>
+                <td><p>Monto Total</p></td>
+            </tr>
+            
+        </thead>
+        <tbody>
+            {% for pedido in registro %}
+                <tr>
+                    {% for dato in pedido %}
+                    <td><p>{{dato}}</p></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

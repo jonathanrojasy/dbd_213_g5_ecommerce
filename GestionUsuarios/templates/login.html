@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+
+
+  <title>{% block title %}Base{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0"&amp;gt; />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+    .titulo {
+        margin-top: 110px;
+    }
+    h1 {
+        font-family: "Inter";
+    }
+    p {
+        font-family: helvetica;
+        font-size: 17px;
+    }
+    .linea {
+        display: inline-block;
+    }
+    .ingreso-datos {
+        background-color: transparent;
+        width: 400px;
+        height: 300px;
+        text-align: left;
+        margin: 50px 0px 100px 100px;
+    }
+    .ingresar {
+        background: #000000;
+        color: white;
+        width: 300px;
+        height: 30px;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-left: 3px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    input {
+        width: 300px;
+        height: 30px;
+        border-radius: 10px;
+    }
+    input[placeholder]{
+        font-size: 15px;
+    }
+    .a1{
+        margin-left: 60px;
+        color: blue;
+        margin: 20px;
+        text-decoration: none;
+        font-family: helvetica;
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+</style>
+<body>
+    <div  align="center" class="titulo">
+        <h1>Intranet Vivanda<br>Iniciar Sesión</h1>
+    </div>
+    <center>
+        <div class="ingreso-datos">
+            <form method="post" style="margin-bottom: 50px;" autocomplete="off">
+                <p>Nombre de Usuario o correo electrónico</p>
+                <input name="usuario" type="text" placeholder="Usuario" required>
+                <p>Contraseña</p>
+                <input name="contrasena" type="password" placeholder="Contraseña">
+                <br><br>
+                <button type="submit" class="ingresar" formaction="/login/">Ingresar</button>
+                {% csrf_token %}
+                {% if invalido %}
+                    <p style="color: red; margin-left: 40px;">{{invalido}}</p>
+                {% endif %}
+                {% if recuperacion %}
+                    <p style="color: green;">{{recuperacion}}</p>
+                {% endif %}
+                <button type="submit" formaction="/recuperar/" class="a1">¿Olvidaste tu contraseña?</button>
+                {% csrf_token %}
+            </form>
+
+        </div>
+
+        <div class="titulo" style="margin-left: 20px;">
+            <p class="linea">¿No tienes una cuenta?</p>
+            <a href="/registroCliente" class="a1">Regístrate</a>
+        </div>
+    </center>
+
+</body>
+</html>

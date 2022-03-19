@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+    .titulo {
+        margin-top: 110px;
+    }
+    h1 {
+        font-family: "Inter";
+    }
+    p {
+        font-family: helvetica;
+    }
+    .linea {
+        display: inline-block;
+    }
+    .ingreso-datos {
+        background-color: transparent;
+        width: 400px;
+        height: 300px;
+        text-align: left;
+        margin: 50px 0px 100px 100px;
+    }
+    .ingresar {
+        background: #000000;
+        color: white;
+        width: 300px;
+        height: 30px;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-left: 3px;
+        font-size: 20px;
+    }
+    a {
+        color: blue;
+        margin: 20px;
+        text-decoration: none;
+        font-family: helvetica;
+    }
+    input {
+        width: 300px;
+        height: 30px;
+        border-radius: 10px;
+    }
+    input[placeholder]{
+        font-size: 15px;
+    }
+    .a1{
+        margin-left: 60px;
+        color: blue;
+        margin: 20px;
+        text-decoration: none;
+        font-family: helvetica;
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div  align="center" class="titulo">
+        <h1>Intranet Vivanda<br>Iniciar Sesión</h1>
+    </div>
+    <center>
+        <div class="ingreso-datos">
+            <form method="post" style="margin-bottom: 50px;" autocomplete="off">
+                <p>Código de empleado</p>
+                <input name="codigo_empleado" type="text" placeholder="Código de empleado" required>
+                <p>Contraseña</p>
+                <input name="contrasena" type="password" placeholder="Contraseña">
+                <br><br>
+                <button type="submit" class="ingresar" formaction="/loginEmpleado/">Ingresar</button>
+                {% csrf_token %}
+                {% if invalido %}
+                    <p style="color: red; margin-left: 40px;">{{invalido}}</p>
+                {% endif %}
+                {% if invalido2 %}
+                    <p style="color: red; margin-left: -30px;">{{invalido2}}</p>
+                {% endif %}
+                {% if recuperacion %}
+                    <p style="color: green;">{{recuperacion}}</p>
+                {% endif %}
+                <button type="submit" formaction="/recuperaEmpleado/" class="a1">¿Olvidaste tu contraseña?</button>
+                {% csrf_token %}
+            </form>
+
+        </div>
+
+        <div class="titulo" style="margin-left: 20px;">
+            <p class="linea">¿No tienes una cuenta?</p>
+            <a href="/registroEmpleado">Regístrate</a>
+        </div>
+    </center>
+</body>
+</html>
