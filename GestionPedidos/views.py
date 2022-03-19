@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
-from utils import Carrito
+from utils.clases import Carrito
 from GestionPedidos.models import Producto, Promocion
 from GestionUsuarios.Usuario import Cliente
 from vivanda_web.conexion import conexion
@@ -17,8 +17,7 @@ def add_product(request, sku):
         cart.agregar(product, prom)
     else:
         cart.agregar(product)
-    return redirect("/productos")
-
+    return redirect('productos:index')
 
 def remove_product(request, sku):
     cart = Carrito(request)
@@ -31,7 +30,7 @@ def decrement_product(request, sku):
     cart = Carrito(request)
     product = get_object_or_404(Producto, pk=sku)
     cart.restar(product)
-    return redirect("/productos")
+    return redirect('productos:index')
 
 
 def clear_cart(request):

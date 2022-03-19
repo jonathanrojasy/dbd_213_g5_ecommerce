@@ -164,9 +164,9 @@
         <h3>Vivanda</h3>
       </a>
       <div class="d-flex flex-row bd-highlight">
-        <form class="d-flex" style="margin-block-end: 0em;">
-          <input class="form-control me-2" type="search" placeholder="Buscar por" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
+        <form class="d-flex pe-5" style="margin-block-end: 0em;" action="{% url 'productos:index' %}">
+          <input name="productos_buscar" class="form-control me-2" type="search" placeholder="Buscar por nombre de producto" aria-label="Search" style="width:280px" value="{{ busqueda }}">
+          <button type="submit" class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
         <div class="d-flex ps-2">
           <button class="btn btn-outline-secondary"><i class="fa fa-truck" aria-hidden="true"></i></button>
@@ -244,45 +244,6 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
   <script>
-    var agregarProducto = function (objeto, codigo) {
-      if (objeto.value == "0" && objeto.innerHTML == "Agregar") {
-        document.getElementById(objeto.id+"-card").className = "card border-dark h-100";
-        precio_unitario = parseFloat(document.getElementById(objeto.id+"-pu").innerHTML);
-        objeto.setAttribute( "onClick", "javascript: ;" );
-        cantidad_productos = parseInt(objeto.value,10) + 1;
-        objeto.value = String(cantidad_productos);
-        objeto.className = "btn btn-outline-light text-black";
-        objeto.style.border = "1px solid #000000";
-        objeto.innerHTML = "<div class='d-flex align-items-center justify-content-around'><button name='minus' class='btn btn-outline-secondary' onclick='minusProducto(this);' value='"+objeto.id+"'><i class='fa fa-minus' aria-hidden='true'></i></button><div id='"+objeto.id+"-value' class='text-align-center'>"+objeto.value+"</div><form action='/agregar/"+codigo+"'><button value='"+objeto.id+"' class='btn btn-outline-secondary' onclick='plusProducto(this);'><i class='fa fa-plus' aria-hidden='true'></i></button></form><div id='"+objeto.id+"-monto' class='text-align-center'>S/. "+String(cantidad_productos*precio_unitario)+"</div></div>";
-      }else{
-        document.getElementById(objeto.id+"-card").className = "card border-light h-100";
-        objeto.innerHTML = "Agregar";
-      }
-    }
-    var minusProducto = function (objeto) {
-      objeto_base = document.getElementById(objeto.value);
-      if (objeto_base.value == "1") {
-        objeto_base.setAttribute( "onClick", "javascript: agregarProducto(this);" );
-        objeto_base.value = "0";
-        objeto_base.className = "btn btn-dark";
-        objeto_base.style = "";
-      }else{
-        objeto_valor = document.getElementById(objeto.value+"-value").innerHTML;
-        precio_unitario = parseFloat(document.getElementById(objeto.value+"-pu").innerHTML);
-        cantidad_productos = parseInt(objeto_valor,10) - 1;
-        document.getElementById(objeto.value+"-value").innerHTML = String(cantidad_productos);
-        document.getElementById(objeto.value).value = String(cantidad_productos);
-        document.getElementById(objeto.value+"-monto").innerHTML = String("S/. "+cantidad_productos*precio_unitario);
-      }
-    }
-    function plusProducto(objeto) {
-      objeto_valor = document.getElementById(objeto.value+"-value").innerHTML;
-      cantidad_productos = parseInt(objeto_valor,10) + 1;
-      precio_unitario = parseFloat(document.getElementById(objeto.value+"-pu").innerHTML);
-      document.getElementById(objeto.value+"-monto").innerHTML = String("S/. "+cantidad_productos*precio_unitario);
-      document.getElementById(objeto.value+"-value").innerHTML = String(cantidad_productos);
-      document.getElementById(objeto.value).value = String(cantidad_productos);
-    }
     function ordenarProductos(params) {
       if (params.getElementsByTagName('i')[0].className.includes("down")) {
         params.getElementsByTagName('i')[0].className = "fa fa-arrow-up";

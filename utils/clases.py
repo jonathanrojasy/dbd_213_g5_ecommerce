@@ -13,8 +13,6 @@ class Categoria:
 # CLASE PARA FORMATEAR LOS REGISTROS OBTENIDOS POR LA 
 # TABLA Producto DE LA BASE DE DATOS
 class Producto():
-
-
     def __init__(self,tupla,request):
         cantidad = 0
         if "carrito" in request.session.keys():

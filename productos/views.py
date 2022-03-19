@@ -5,15 +5,25 @@ from utils import clases
 
 # Create your views here.
 def index(request):
+    nombre_producto = request.GET.get('productos_buscar')
     conexion
     try:
         with conexion.cursor() as cursor:
+            # OBTENER CATEGORIAS
             cursor.execute('SELECT c.* FROM categoria as c;')
             categorias_sql = cursor.fetchall()
             categorias = []
             for categoria_sql in categorias_sql:
                 categorias.append(clases.Categoria(categoria_sql))
-            cursor.execute('SELECT p.* FROM producto as p;')
+            # OBTENER PRODUCTOS
+            if nombre_producto:
+                cursor.execute(f'''SELECT * 
+                            FROM Producto 
+                            WHERE unaccent(nombre_producto) ILIKE unaccent('%{nombre_producto}%');
+                            ''')
+            else:
+                cursor.execute('SELECT p.* FROM Producto as p;')
+                nombre_producto = ""
             productos_sql = cursor.fetchall()
             productos = []
             for producto_sql in productos_sql:
@@ -34,7 +44,7 @@ def index(request):
                             if categoryAux == categoria.id_categoria:
                                 arrProductos[count][categoryAux].append(producto)
                             count += 1
-            return render(request, 'productos/index.html',{'categorias': categorias, 'productos': arrProductos })
+            return render(request, 'productos/index.html',{'categorias': categorias, 'productos': arrProductos, 'busqueda':nombre_producto})
     except Exception as e:
         return HttpResponse('Ocurrio un error: %s' % (e,))
 
